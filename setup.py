@@ -10,6 +10,9 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
+with open(path.join(here, 'requirements.txt'), encoding='utf-8') as f:
+    install_requires = [l.split('\n')[0] for l in f.readlines()]
+
 setup(
     name='aiotelegraf',
     version='0.1.0.dev0',
@@ -23,9 +26,7 @@ setup(
         'tests.*',
         'tests',
     )),
-    install_requires=[
-        'pytelegraf<=0.4.0',
-    ],
+    install_requires=install_requires,
     include_package_data=True,
     classifiers=[
         'Development Status :: 4 - Beta',
