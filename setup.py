@@ -15,7 +15,7 @@ with open(path.join(here, 'requirements.txt'), encoding='utf-8') as f:
 
 setup(
     name='aiotelegraf',
-    version='0.1.0',
+    version='0.2.0.dev0',
     description='AsyncIO Python client for sending metrics to Telegraf',
     long_description=long_description,
     long_description_content_type='text/markdown',
