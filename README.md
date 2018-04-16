@@ -1,4 +1,4 @@
-# aiotelegraf
+# aiotelegraf [![Build Status](https://travis-ci.org/Gr1N/aiotelegraf.svg?branch=master)](https://travis-ci.org/Gr1N/aiotelegraf)
 
 An asyncio-base client for sending metrics to [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/).
 
