@@ -1,3 +1,5 @@
+sudo: false
+
 language: python
 
 matrix:
@@ -12,7 +14,10 @@ matrix:
       env: TOXENV=py36-tests
 
 install:
-  - pip install tox
+  - pip install codecov tox
 
 script:
   - tox
+
+after_success:
+  - codecov
