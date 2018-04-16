@@ -1,4 +1,4 @@
-# aiotelegraf [![Build Status](https://travis-ci.org/Gr1N/aiotelegraf.svg?branch=master)](https://travis-ci.org/Gr1N/aiotelegraf) [![codecov](https://codecov.io/gh/Gr1N/aiotelegraf/branch/master/graph/badge.svg)](https://codecov.io/gh/Gr1N/aiotelegraf)
+# aiotelegraf [![Build Status](https://travis-ci.org/Gr1N/aiotelegraf.svg?branch=master)](https://travis-ci.org/Gr1N/aiotelegraf) [![codecov](https://codecov.io/gh/Gr1N/aiotelegraf/branch/master/graph/badge.svg)](https://codecov.io/gh/Gr1N/aiotelegraf) [![Updates](https://pyup.io/repos/github/Gr1N/aiotelegraf/shield.svg)](https://pyup.io/repos/github/Gr1N/aiotelegraf/)
 
 An asyncio-base client for sending metrics to [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/).
 
