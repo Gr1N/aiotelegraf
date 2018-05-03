@@ -64,7 +64,7 @@ class DatagramProtocol(asyncio.DatagramProtocol):
     )
 
     def __init__(self) -> None:
-        self._transport: DatagramTransport = None
+        self._transport: Optional[DatagramTransport] = None
 
     def close(self) -> None:
         if self._transport is None:
