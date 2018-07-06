@@ -14,7 +14,7 @@ matrix:
       env: TOXENV=py36-tests
 
 install:
-  - pip install codecov tox
+  - pip install codecov poetry tox
 
 script:
   - tox

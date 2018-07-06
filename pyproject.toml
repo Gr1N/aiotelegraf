@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "aiotelegraf"
+version = "0.2.0-alpha.0"
+description = "AsyncIO Python client for sending metrics to Telegraf"
+authors = [
+    "Nikita Grishko <gr1n@protonmail.com>"
+]
+license = "MIT"
+
+readme = "README.md"
+
+homepage = "https://github.com/Gr1N/aiotelegraf"
+repository = "https://github.com/Gr1N/aiotelegraf"
+
+keywords = ["asyncio", "telegraf", "influx", "tick"]
+
+classifiers = [
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+pytelegraf = "0.*"
+
+[tool.poetry.dev-dependencies]
+black = "*"
+flake8 = "*"
+flake8-bugbear = "*"
+isort = "*"
+mypy = "*"
+pytest = "*"
+pytest-asyncio = "*"
+pytest-cov = "*"
+tox = "^3.0.0"
