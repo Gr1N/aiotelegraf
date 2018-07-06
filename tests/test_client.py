@@ -7,10 +7,7 @@ import aiotelegraf
 
 @pytest.fixture
 def cfg():
-    return {
-        'host': '0.0.0.0',
-        'port': 8089,
-    }
+    return {"host": "0.0.0.0", "port": 8089}
 
 
 @pytest.fixture
@@ -36,11 +33,7 @@ def udpserver(event_loop, cfg):
 
         async def __aenter__(self):
             listen = event_loop.create_datagram_endpoint(
-                Protocol,
-                local_addr=(
-                    cfg['host'],
-                    cfg['port'],
-                )
+                Protocol, local_addr=(cfg["host"], cfg["port"])
             )
             self._transport, _ = await listen
 
@@ -60,7 +53,7 @@ async def wait_for_result(datagrams, *, expected_count=1):
             attempts += 1
             await asyncio.sleep(0.5)
         else:
-            raise RuntimeError('Failed to receive datagrams')
+            raise RuntimeError("Failed to receive datagrams")
 
 
 @pytest.mark.asyncio
@@ -68,8 +61,8 @@ async def test_client__ok(client, udpserver):
     server, datagrams = udpserver
 
     async with server:
-        client.metric('test_name_1', 'test_value_1')
-        client.metric('test_name_2', 'test_value_2')
+        client.metric("test_name_1", "test_value_1")
+        client.metric("test_name_2", "test_value_2")
 
         await wait_for_result(datagrams, expected_count=2)
 

@@ -1,27 +1,17 @@
 import asyncio
 from asyncio.transports import DatagramTransport
-from typing import (
-    Any,
-    Optional,
-)
+from typing import Any, Optional
 
 from telegraf.client import ClientBase
 
-__all__ = (
-    'Client',
-)
+__all__ = ("Client",)
 
 
 class Client(ClientBase):
-    __slots__ = (
-        '_protocol',
-    )
+    __slots__ = ("_protocol",)
 
     def __init__(
-        self, *,
-        host: str = 'localhost',
-        port: int = 8094,
-        tags: Optional[dict] = None
+        self, *, host: str = "localhost", port: int = 8094, tags: Optional[dict] = None
     ) -> None:
         super().__init__(host=host, port=port, tags=tags)
 
@@ -30,11 +20,7 @@ class Client(ClientBase):
     async def connect(self) -> None:
         loop = asyncio.get_event_loop()
         await loop.create_datagram_endpoint(
-            lambda: self._protocol,
-            remote_addr=(
-                self.host,
-                self.port,
-            )
+            lambda: self._protocol, remote_addr=(self.host, self.port)
         )
 
     async def close(self) -> None:
@@ -43,25 +29,19 @@ class Client(ClientBase):
     def metric(
         self,
         measurement_name: str,
-        values: Any, *,
+        values: Any,
+        *,
         tags: Optional[dict] = None,
-        timestamp: Optional[int] = None
+        timestamp: Optional[int] = None,
     ) -> None:
-        super().metric(
-            measurement_name,
-            values,
-            tags=tags,
-            timestamp=timestamp
-        )
+        super().metric(measurement_name, values, tags=tags, timestamp=timestamp)
 
     def send(self, data: str) -> None:
         self._protocol.send(data)
 
 
 class DatagramProtocol(asyncio.DatagramProtocol):
-    __slots__ = (
-        '_transport',
-    )
+    __slots__ = ("_transport",)
 
     def __init__(self) -> None:
         self._transport: Optional[DatagramTransport] = None
@@ -83,7 +63,7 @@ class DatagramProtocol(asyncio.DatagramProtocol):
             return
 
         try:
-            self._transport.sendto(f'{data}\n'.encode('utf-8'))
+            self._transport.sendto(f"{data}\n".encode("utf-8"))
         except:  # noqa: E722
             # Errors should fail silently so they don't affect anything else
             pass
