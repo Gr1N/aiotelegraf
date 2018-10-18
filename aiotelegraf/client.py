@@ -17,8 +17,9 @@ class Client(ClientBase):
 
         self._protocol = DatagramProtocol()
 
-    async def connect(self) -> None:
-        loop = asyncio.get_event_loop()
+    async def connect(self, loop=None) -> None:
+        if not loop:
+            loop = asyncio.get_event_loop()
         await loop.create_datagram_endpoint(
             lambda: self._protocol, remote_addr=(self.host, self.port)
         )
