@@ -18,23 +18,25 @@ $ pip install aiotelegraf
 import asyncio
 import aiotelegraf
 
-loop = asyncio.get_event_loop()
-r = loop.run_until_complete
 
-client = aiotelegraf.Client(
-    host='0.0.0.0',
-    port=8089,
-    tags={
-        'my_global_tag_1': 'value_1',
-        'my_global_tag_2': 'value_2',
-    }
-)
-r(client.connect())
+async def main():
+    client = aiotelegraf.Client(
+        host='0.0.0.0',
+        port=8089,
+        tags={
+            'my_global_tag_1': 'value_1',
+            'my_global_tag_2': 'value_2',
+        }
+    )
+    await client.connect()
 
-client.metric('my_metric_1', 'value_1', tags={
-    'my_tag_1': 'value_1',
-})
-r(client.close())
+    client.metric('my_metric_1', 'value_1', tags={
+        'my_tag_1': 'value_1',
+    })
+    await client.close()
+
+
+asyncio.run(main())
 ```
 
 ## Contributing
