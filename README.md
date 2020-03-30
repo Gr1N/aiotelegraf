@@ -1,4 +1,6 @@
-# aiotelegraf [![Build Status](https://travis-ci.org/Gr1N/aiotelegraf.svg?branch=master)](https://travis-ci.org/Gr1N/aiotelegraf) [![codecov](https://codecov.io/gh/Gr1N/aiotelegraf/branch/master/graph/badge.svg)](https://codecov.io/gh/Gr1N/aiotelegraf) [![Updates](https://pyup.io/repos/github/Gr1N/aiotelegraf/shield.svg)](https://pyup.io/repos/github/Gr1N/aiotelegraf/) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+# aiotelegraf
+
+[![Build Status](https://github.com/Gr1N/aiotelegraf/workflows/default/badge.svg)](https://github.com/Gr1N/aiotelegraf/actions?query=workflow%3Adefault) [![codecov](https://codecov.io/gh/Gr1N/aiotelegraf/branch/master/graph/badge.svg)](https://codecov.io/gh/Gr1N/aiotelegraf) ![PyPI](https://img.shields.io/pypi/v/aiotelegraf.svg?label=pypi%20version) ![PyPI - Downloads](https://img.shields.io/pypi/dm/aiotelegraf.svg?label=pypi%20downloads) ![GitHub](https://img.shields.io/github/license/Gr1N/aiotelegraf.svg)
 
 An asyncio-base client for sending metrics to [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/).
 
@@ -6,45 +8,55 @@ Implementation based on [pytelegraf](https://github.com/paksu/pytelegraf) packag
 
 ## Installation
 
-    $ pip install aiotelegraf
+```shell
+$ pip install aiotelegraf
+```
 
 ## Usage
 
-    import asyncio
-    import aiotelegraf
+```python
+import asyncio
+import aiotelegraf
 
-    loop = asyncio.get_event_loop()
-    r = loop.run_until_complete
+loop = asyncio.get_event_loop()
+r = loop.run_until_complete
 
-    client = aiotelegraf.Client(
-        host='0.0.0.0',
-        port=8089,
-        tags={
-            'my_global_tag_1': 'value_1',
-            'my_global_tag_2': 'value_2',
-        }
-    )
-    r(client.connect())
+client = aiotelegraf.Client(
+    host='0.0.0.0',
+    port=8089,
+    tags={
+        'my_global_tag_1': 'value_1',
+        'my_global_tag_2': 'value_2',
+    }
+)
+r(client.connect())
 
-    client.metric('my_metric_1', 'value_1', tags={
-        'my_tag_1': 'value_1',
-    })
-    r(client.close())
+client.metric('my_metric_1', 'value_1', tags={
+    'my_tag_1': 'value_1',
+})
+r(client.close())
+```
 
 ## Contributing
 
-To work on the `aiotelegraf` codebase, you'll want to clone the project locally and install the required dependencies via [poetry](https://poetry.eustace.io):
+To work on the `aiotelegraf` codebase, you'll want to clone the project locally and install the required dependencies via [poetry](https://python-poetry.org):
 
-    $ git clone git@github.com:Gr1N/aiotelegraf.git
-    $ poetry install
+```sh
+$ git clone git@github.com:Gr1N/aiotelegraf.git
+$ make install
+```
 
 To run tests and linters use command below:
 
-    $ poetry run tox
+```sh
+$ make lint && make test
+```
 
 If you want to run only tests or linters you can explicitly specify which test environment you want to run, e.g.:
 
-    $ poetry run tox -e py37-tests
+```sh
+$ make lint-black
+```
 
 ## License
 

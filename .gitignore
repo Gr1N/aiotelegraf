@@ -50,6 +50,7 @@ lib64/
 parts/
 sdist/
 var/
+pip-wheel-metadata/
 wheels/
 *.egg-info/
 .installed.cfg
@@ -68,7 +69,6 @@ pip-delete-this-directory.txt
 
 # Unit test / coverage reports
 htmlcov/
-.tox/
 .coverage
 .coverage.*
 .cache
@@ -135,3 +135,9 @@ venv.bak/
 
 
 # End of https://www.gitignore.io/api/osx,python,visualstudiocode
+
+### asdf ###
+.tool-versions
+
+### poetry ###
+get-poetry.py
