@@ -54,7 +54,7 @@ skip = ".eggs,.venv,venv"
 
 [tool.poetry]
 name = "aiotelegraf"
-version = "0.3.0-alpha.0"
+version = "0.3.0"
 description = "AsyncIO Python client for sending metrics to Telegraf"
 authors = [
     "Nikita Grishko <gr1n@protonmail.com>"
