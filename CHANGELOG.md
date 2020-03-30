@@ -1,5 +1,7 @@
 # Changelog for aiotelegraf
 
+## 0.4.0 (20XX-XX-XX)
+
 ## 0.3.0 (2020-03-30)
 
 - Python 3.8 support
