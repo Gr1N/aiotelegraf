@@ -4,6 +4,8 @@ from typing import Any, Optional
 
 from telegraf.client import ClientBase
 
+from aiotelegraf import compat
+
 __all__ = ("Client",)
 
 
@@ -18,7 +20,7 @@ class Client(ClientBase):
         self._protocol = DatagramProtocol()
 
     async def connect(self) -> None:
-        loop = asyncio.get_event_loop()
+        loop = compat.get_event_loop()
         await loop.create_datagram_endpoint(
             lambda: self._protocol, remote_addr=(self.host, self.port)
         )
